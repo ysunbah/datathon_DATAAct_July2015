@@ -4,8 +4,6 @@
 library(XML)
 library(httr)
 
-#testing
-
 #get the variables:
 statesindex = read.table("state.txt",header = TRUE,sep = "|",colClasses=c(STATE="character"))
 varsindex = read.table("var_index.txt", header = TRUE, sep= "\t")
@@ -36,9 +34,7 @@ for (i in start){
   dat_raw = try(readLines(query, warn="F"))
   
   tmp =strsplit(gsub("[^[:alnum:], _]", '', dat_raw), "\\,")
-  if(length(tmp)<50){
-    print("temp is less than 50")
-  }
+
   dat_df = as.data.frame(do.call(rbind, tmp[-1]), stringsAsFactors=FALSE)
   if (i ==1){
       all<-dat_df}
